@@ -13,7 +13,7 @@
             <div class="collapse navbar-collapse">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item"><a class="nav-link" href="{{ route('productos.index') }}">Productos</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ route('clientes.index') }}">Clientes</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('clientes.index') }}" id="link-clientes">Clientes</a></li>
                 </ul>
             </div>
         </nav>

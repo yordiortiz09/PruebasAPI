@@ -16,7 +16,7 @@ use App\Http\Controllers\ProductoController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('productos.index');
 });
 Route::middleware('web')->group(function () {
     Route::get('clientes', [ClienteController::class, 'index'])->name('clientes.index');

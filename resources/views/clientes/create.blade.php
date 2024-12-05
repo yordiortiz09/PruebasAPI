@@ -10,9 +10,10 @@
         @csrf
         {{-- Campo para el nombre --}}
         <div class="mb-3">
-            <label for="nombre" class="form-label">Nombre</label>
+            <label for="nombre-cliente" class="form-label">Nombre</label>
             <input
                 type="text"
+                id="nombre-cliente"
                 name="nombre"
                 class="form-control @error('nombre') is-invalid @enderror"
                 value="{{ old('nombre') }}"
@@ -26,9 +27,10 @@
 
         {{-- Campo para el correo --}}
         <div class="mb-3">
-            <label for="correo" class="form-label">Correo Electrónico</label>
+            <label for="correo-cliente" class="form-label">Correo Electrónico</label>
             <input
                 type="email"
+                id="correo-cliente"
                 name="correo"
                 class="form-control @error('correo') is-invalid @enderror"
                 value="{{ old('correo') }}"
@@ -42,9 +44,10 @@
 
         {{-- Campo para el teléfono --}}
         <div class="mb-3">
-            <label for="telefono" class="form-label">Teléfono</label>
+            <label for="telefono-cliente" class="form-label">Teléfono</label>
             <input
                 type="text"
+                id="telefono-cliente"
                 name="telefono"
                 class="form-control @error('telefono') is-invalid @enderror"
                 value="{{ old('telefono') }}"
@@ -57,6 +60,6 @@
         </div>
 
         {{-- Botón para guardar --}}
-        <button type="submit" class="btn btn-primary">Guardar</button>
+        <button type="submit" id="btn-guardar-cliente" class="btn btn-primary">Guardar</button>
     </form>
 @endsection

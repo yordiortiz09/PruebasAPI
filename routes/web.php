@@ -18,9 +18,8 @@ use App\Http\Controllers\ProductoController;
 Route::get('/', function () {
     return view('welcome');
 });
-
-
-Route::get('clientes', [ClienteController::class, 'index'])->name('clientes.index');
+Route::middleware('web')->group(function () {
+    Route::get('clientes', [ClienteController::class, 'index'])->name('clientes.index');
 Route::get('clientes/create', [ClienteController::class, 'create'])->name('clientes.create');
 Route::post('clientes', [ClienteController::class, 'store'])->name('clientes.store');
 Route::get('clientes/{cliente}/edit', [ClienteController::class, 'edit'])->name('clientes.edit');
@@ -33,6 +32,11 @@ Route::post('productos', [ProductoController::class, 'store'])->name('productos.
 Route::get('productos/{producto}/edit', [ProductoController::class, 'edit'])->name('productos.edit');
 Route::put('productos/{producto}', [ProductoController::class, 'update'])->name('productos.update');
 Route::delete('productos/{producto}', [ProductoController::class, 'destroy'])->name('productos.destroy');
+
+
+});
+
+
 
 
 

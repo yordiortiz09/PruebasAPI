@@ -49,7 +49,7 @@
             "@php artisan key:generate --ansi"
         ],  "test-all": [
             "@php artisan dusk",
-           "@php artisan test"
+            "@php artisan test"
        ]
     },
     "extra": {

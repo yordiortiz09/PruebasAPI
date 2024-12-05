@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('productos', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre');
-            $table->decimal('precio', 8, 2);
-            $table->integer('stock');
+            $table->string('nombre', 255);
+            $table->decimal('precio', 8, 2)->default(0);
+            $table->integer('stock')->unsigned()->default(0);
             $table->timestamps();
         });
     }

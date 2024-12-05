@@ -7,6 +7,7 @@ use Facebook\WebDriver\Remote\DesiredCapabilities;
 use Facebook\WebDriver\Remote\RemoteWebDriver;
 use Illuminate\Support\Collection;
 use Laravel\Dusk\TestCase as BaseTestCase;
+use Mockery;
 use PHPUnit\Framework\Attributes\BeforeClass;
 
 abstract class DuskTestCase extends BaseTestCase
@@ -19,6 +20,8 @@ abstract class DuskTestCase extends BaseTestCase
     #[BeforeClass]
     public static function prepare(): void
     {
+        Mockery::getConfiguration()->allowMockingNonExistentMethods(false);
+
         if (! static::runningInSail()) {
             // Inicia ChromeDriver en el puerto 9515
             static::startChromeDriver(['--port=9515']);

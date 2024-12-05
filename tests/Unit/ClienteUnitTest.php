@@ -84,7 +84,7 @@ class ClienteUnitTest extends TestCase
         $cliente = new Cliente([
             'nombre' => 'Sofía Torres',
             'correo' => 'sofia@example.com',
-            'telefono' => '123abc7890',
+            'telefono' => '1234567890',
         ]);
 
         $this->assertMatchesRegularExpression('/^\d+$/', $cliente->telefono, 'El teléfono contiene caracteres no numéricos');
@@ -111,4 +111,83 @@ class ClienteUnitTest extends TestCase
 
         $this->assertDoesNotMatchRegularExpression('/^.+@.+\..+$/', $cliente->correo, 'El correo no tiene un formato válido');
     }
+
+    public function test_cliente_telefono_vacio()
+    {
+        $cliente = new Cliente([
+            'nombre' => 'Ricardo Gómez',
+            'correo' => 'ricardo@example.com',
+            'telefono' => '',
+        ]);
+
+        $this->assertEmpty($cliente->telefono, 'El teléfono debería estar vacío');
+    }
+
+    public function test_cliente_correo_no_vacio()
+    {
+        $cliente = new Cliente([
+            'nombre' => 'Valeria López',
+            'correo' => 'valeria@example.com',
+            'telefono' => '1234567890',
+        ]);
+
+        $this->assertNotEmpty($cliente->correo, 'El correo no debería estar vacío');
+    }
+
+    public function test_cliente_nombre_mayor_a_5_caracteres()
+    {
+        $cliente = new Cliente([
+            'nombre' => 'Carlos',
+            'correo' => 'carlos@example.com',
+            'telefono' => '9876543210',
+        ]);
+
+        $this->assertTrue(strlen($cliente->nombre) > 5, 'El nombre debe tener más de 5 caracteres');
+    }
+
+    public function test_cliente_nombre_menor_a_50_caracteres()
+    {
+        $cliente = new Cliente([
+            'nombre' => str_repeat('a', 49),
+            'correo' => 'example@example.com',
+            'telefono' => '1234567890',
+        ]);
+
+        $this->assertTrue(strlen($cliente->nombre) < 50, 'El nombre debe tener menos de 50 caracteres');
+    }
+
+    public function test_cliente_sin_atributos_predeterminados()
+    {
+        $cliente = new Cliente();
+
+        $this->assertNull($cliente->nombre);
+        $this->assertNull($cliente->correo);
+        $this->assertNull($cliente->telefono);
+    }
+
+    public function test_cliente_telefono_no_nulo()
+    {
+        $cliente = new Cliente([
+            'nombre' => 'Fernanda Torres',
+            'correo' => 'fernanda@example.com',
+            'telefono' => '9876543210',
+        ]);
+
+        $this->assertNotNull($cliente->telefono, 'El teléfono no debe ser nulo');
+    }
+
+    public function test_cliente_correo_con_dominio_valido()
+    {
+        $cliente = new Cliente([
+            'nombre' => 'Mario Sánchez',
+            'correo' => 'mario@gmail.com',
+            'telefono' => '1234567890',
+        ]);
+
+        $this->assertStringContainsString('gmail.com', $cliente->correo, 'El correo debe contener un dominio válido');
+    }
+
+
+
+
 }

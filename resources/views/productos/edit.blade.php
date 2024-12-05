@@ -13,6 +13,7 @@
             <input
                 type="text"
                 name="nombre"
+                id="nombre-producto-edit"
                 class="form-control @error('nombre') is-invalid @enderror"
                 value="{{ old('nombre', $producto->nombre) }}"
                 required>
@@ -27,6 +28,7 @@
             <input
                 type="number"
                 name="precio"
+                id="precio-producto-edit"
                 class="form-control @error('precio') is-invalid @enderror"
                 value="{{ old('precio', $producto->precio) }}"
                 step="0.01"
@@ -42,6 +44,7 @@
             <input
                 type="number"
                 name="stock"
+                id="stock-producto-edit"
                 class="form-control @error('stock') is-invalid @enderror"
                 value="{{ old('stock', $producto->stock) }}"
                 required>
@@ -50,6 +53,6 @@
             @enderror
         </div>
 
-        <button type="submit" class="btn btn-primary">Actualizar</button>
+        <button type="submit" id="btn-actualizar-producto" class="btn btn-primary">Actualizar</button>
     </form>
 @endsection

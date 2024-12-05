@@ -12,6 +12,7 @@
             <input
                 type="text"
                 name="nombre"
+                id="nombre-producto"
                 class="form-control @error('nombre') is-invalid @enderror"
                 value="{{ old('nombre') }}"
                 required>
@@ -26,6 +27,7 @@
             <input
                 type="number"
                 name="precio"
+                id="precio-producto"
                 class="form-control @error('precio') is-invalid @enderror"
                 value="{{ old('precio') }}"
                 step="0.01"
@@ -41,6 +43,7 @@
             <input
                 type="number"
                 name="stock"
+                id="stock-producto"
                 class="form-control @error('stock') is-invalid @enderror"
                 value="{{ old('stock') }}"
                 required>
@@ -49,6 +52,6 @@
             @enderror
         </div>
 
-        <button type="submit" class="btn btn-primary">Guardar</button>
+        <button type="submit" id="btn-guardar-producto" class="btn btn-primary">Guardar</button>
     </form>
 @endsection
